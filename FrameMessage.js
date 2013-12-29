@@ -17,7 +17,7 @@ var FrameMessage = (function(){
         this.executor = typeof(executor)!='undefined'? executor : '';
         this.frame = typeof(frame)!='undefined'? frame : '';
         this.func = typeof(func)!='undefined'? func : '';
-        this.args = typeof(args)!='undefined'? (__isArray(args)? args : []) : []; // 必须是数组
+        this.args = typeof(args)!='undefined'? (__fIsArray(args)? args : []) : []; // 必须是数组
 
         if(executor==''){
             __fSameDomainExec(); // same domain
@@ -55,7 +55,7 @@ var FrameMessage = (function(){
     }
 
     /* 判断是否数组 */
-    function __isArray(obj){
+    function __fIsArray(obj){
         return Object.prototype.toString.call(obj) === '[object Array]';
     }
 
