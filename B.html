@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title> iframe window </title>
+  <script type="text/javascript" src="json2.js"></script>
+  <script type="text/javascript" src="FrameMessage.js"></script>
+
+  <script type="text/javascript">
+
+  // iframe js function 
+  function fIframe(name, obj, arr){
+	
+	var obj_p = JSON.parse(obj);
+	var arr_p = JSON.parse(arr);
+	
+	var msg = "iframe function execute success\n\n";
+	msg += "name:" + name + "\n";
+	msg += "gender:" + obj_p.gender + "\n";
+	msg += "age:" + obj_p.age + "\n";
+	msg += "blog:" + arr_p[0] + "\n";
+	msg += "weibo:" + arr_p[1] + "\n";
+
+	alert(msg);
+
+  }
+
+  // exec main function
+  function exec_main(){
+	// same domain
+	//FrameMessage.exec('', '', 'fMain', ['programmer', '{"first":"PHP","second":"javascript"}', '["EEG","NMG"]']);
+
+	// cross domain
+	FrameMessage.exec('http://localhost/execA.php', '', 'fMain', ['programmer', '{"first":"PHP","second":"javascript"}', '["EEG","NMG"]']);  
+  }
+  </script>
+
+ </head>
+
+ <body>
+  <p>B.html iframe</p>
+  <p><input type="button" value="exec main function" onclick="exec_main()"></p>
+ </body>
+</html>

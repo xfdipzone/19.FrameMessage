@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title> main window </title>
+  <script type="text/javascript" src="json2.js"></script>
+  <script type="text/javascript" src="FrameMessage.js"></script>
+
+  <script type="text/javascript">
+
+  // main js function
+  function fMain(profession, skill, company){
+
+	var skill_p = JSON.parse(skill);
+	var company_p = JSON.parse(company);
+	
+	var msg = "main function execute success\n\n";
+	msg += "profession:" + profession + "\n";
+	msg += "first skill:" + skill_p.first + "\n";
+	msg += "second skill:" + skill_p.second + "\n";
+	msg += "company1:" + company_p[0] + "\n";
+	msg += "company2:" + company_p[1] + "\n";
+
+	alert(msg);
+
+  }
+
+  // exec iframe function
+  function exec_iframe(){
+	// same domain
+	//FrameMessage.exec('', 'myframe', 'fIframe', ['fdipzone', '{"gender":"male","age":"29"}', '["http://blog.csdn.net/fdipzone", "http://weibo.com/fdipzone"]']);
+
+	// cross domain
+	FrameMessage.exec('http://127.0.0.1/execB.php', 'myframe', 'fIframe', ['fdipzone', '{"gender":"male","age":"29"}', '["http://blog.csdn.net/fdipzone", "http://weibo.com/fdipzone"]']);
+  }
+  </script>
+
+ </head>
+
+ <body>
+  <p>A.html main</p>
+  <p><input type="button" value="exec iframe function" onclick="exec_iframe()"></p>
+  <!-- same domain -->
+  <!--<iframe src="B.html" name="myframe" width="500" height="100"></iframe>-->
+  <!-- cross domain -->
+  <iframe src="http://127.0.0.1/B.html" name="myframe" width="500" height="100"></iframe>
+ </body>
+</html>
