@@ -10,28 +10,28 @@
 
   // iframe js function 
   function fIframe(name, obj, arr){
-	
-	var obj_p = JSON.parse(obj);
-	var arr_p = JSON.parse(arr);
-	
-	var msg = "iframe function execute success\n\n";
-	msg += "name:" + name + "\n";
-	msg += "gender:" + obj_p.gender + "\n";
-	msg += "age:" + obj_p.age + "\n";
-	msg += "blog:" + arr_p[0] + "\n";
-	msg += "weibo:" + arr_p[1] + "\n";
 
-	alert(msg);
+    var obj_p = JSON.parse(obj);
+    var arr_p = JSON.parse(arr);
+
+    var msg = "iframe function execute success\n\n";
+    msg += "name:" + name + "\n";
+    msg += "gender:" + obj_p.gender + "\n";
+    msg += "age:" + obj_p.age + "\n";
+    msg += "blog:" + arr_p[0] + "\n";
+    msg += "weibo:" + arr_p[1] + "\n";
+
+    alert(msg);
 
   }
 
   // exec main function
   function exec_main(){
-	// same domain
-	//FrameMessage.exec('', '', 'fMain', ['programmer', '{"first":"PHP","second":"javascript"}', '["EEG","NMG"]']);
+    // same domain
+    //FrameMessage.exec('', '', 'fMain', ['programmer', '{"first":"PHP","second":"javascript"}', '["EEG","NMG"]']);
 
-	// cross domain
-	FrameMessage.exec('http://localhost/execA.php', '', 'fMain', ['programmer', '{"first":"PHP","second":"javascript"}', '["EEG","NMG"]']);  
+    // cross domain
+    FrameMessage.exec('http://localhost/execA.php', '', 'fMain', ['programmer', '{"first":"PHP","second":"javascript"}', '["EEG","NMG"]']);  
   }
   </script>
 

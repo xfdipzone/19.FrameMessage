@@ -33,13 +33,13 @@ class FrameMessage{ // class start
 
         if($args){
             $params = json_decode($args, true);
-            
+
             if(is_array($params)){
 
                 for($i=0,$len=count($params); $i<$len; $i++){ // 过滤参数,防止注入
                     $params[$i] = self::jsFormat($params[$i]);
                 }
-                
+
                 $params_str = "'".implode("','", $params)."'";
             }
         }
