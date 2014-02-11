@@ -5,6 +5,8 @@
 */
 var FrameMessage = (function(){
 
+	this.oFrameMessageExec = null; // 临时iframe
+
     /* 执行方法
     executor 执行的页面,为空则为同域
     frame    要调用的方法的框架名称,为空则为parent
@@ -38,14 +40,14 @@ var FrameMessage = (function(){
 
     /* 跨域执行 */
     function __fCrossDomainExec(){
-        if(typeof(oFrameMessageExec=='undefined')){
-            var oFrameMessageExec = document.createElement('iframe');
-            oFrameMessageExec.name = 'FrameMessage_tmp_frame';
-            oFrameMessageExec.src = __fGetSrc();
-            oFrameMessageExec.style.display = 'none';
-            document.body.appendChild(oFrameMessageExec);
+        if(this.oFrameMessageExec == null){
+            this.oFrameMessageExec = document.createElement('iframe');
+            this.oFrameMessageExec.name = 'FrameMessage_tmp_frame';
+            this.oFrameMessageExec.src = __fGetSrc();
+            this.oFrameMessageExec.style.display = 'none';
+            document.body.appendChild(this.oFrameMessageExec);
         }else{
-            oFrameMessageExec.src = __fGetSrc();
+            this.oFrameMessageExec.src = __fGetSrc();
         }
     }
 
